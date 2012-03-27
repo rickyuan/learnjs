@@ -29,6 +29,8 @@ function setSquare(thisSquare) {
 	while (usedNums[newNum]);
 	usedNums[newNum] = true;
 	document.getElementById(currSquare).innerHTML = newNum;
+	document.getElementById(currSquare).className = "";
+	document.getElementById(currSquare).onmousedown = toggleColor;
 }
 
 function getNewNum() {
@@ -42,4 +44,19 @@ function anotherCard() {
 	
 	newCard();
 	return false;
+}
+
+function toggleColor(evt) {
+	if (evt) {
+		var thisSquare = evt.target;
+	}
+	else {
+		var thisSquare = window.event.srcElement;
+	}
+	if (thisSquare.className == "") {
+		thisSquare.className = "alert-info";
+	}
+	else {
+		thisSquare.className = "";
+	}
 }
